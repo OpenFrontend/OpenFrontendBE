@@ -13,5 +13,7 @@ namespace OpenFrontendBE.Models
         public byte[] PasswordSalt { get; set; }
 
         public Role Role { get; set; }
+
+        public UserProfile Profile { get; set; }
     }
 }

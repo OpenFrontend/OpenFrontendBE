@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using OpenFrontendBE.Data;
@@ -43,8 +44,13 @@ namespace OpenFrontendBE.Controllers
                 Email = userdto.Email,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
-                Role= Role.USER
+                Role= Role.USER,
+                Profile=new UserProfile
+                {
+                    CreatedAt= DateTime.UtcNow
+                }
             };
+           
 
             _db.Users.Add(user);
             _db.SaveChanges();
@@ -73,6 +79,11 @@ namespace OpenFrontendBE.Controllers
             return CreateToken(user);
 
 
+        }
+        [HttpGet, Route("checktoken"), Authorize()]
+        public ActionResult CheckToken()
+        {
+            return Ok();
         }
 
 

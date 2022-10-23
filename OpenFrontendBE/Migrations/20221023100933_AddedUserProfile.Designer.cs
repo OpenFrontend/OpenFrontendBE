@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OpenFrontendBE.Data;
@@ -11,9 +12,10 @@ using OpenFrontendBE.Data;
 namespace OpenFrontendBE.Migrations
 {
     [DbContext(typeof(OfdbContext))]
-    partial class OfdbContextModelSnapshot : ModelSnapshot
+    [Migration("20221023100933_AddedUserProfile")]
+    partial class AddedUserProfile
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
